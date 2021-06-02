@@ -95,6 +95,7 @@ const FileLoader = () => {
         isLoading: false
       });
     } catch(err) {
+      console.log(err)
       Alert.alert("Some files and folders are missing. Please check your file arrangement and try again");
     }
   }

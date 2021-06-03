@@ -13,7 +13,7 @@ const GalleryItem = ({ item, onPress }) => {
 
   let image = data?.[0]?.data;
   if(typeof image === "string"){
-    image = { uri: `file://${image}`}
+    image = { uri: `file://${image}` };
   }
 
   return(

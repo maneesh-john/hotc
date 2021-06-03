@@ -19,8 +19,8 @@ const Header = ({ title, navigation, backAction }) => {
 
   const goBack = () => {
     backAction?
-    backAction?.():
-    navigation?.goBack?.(null);
+      backAction?.():
+      navigation?.goBack?.(null);
   }
   
   const goHome = () => {

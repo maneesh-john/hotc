@@ -11,5 +11,11 @@ export default {
   vid3: require("../assets/vids/vid3.mp4"),
   vid4: require("../assets/vids/vid4.mp4"),
   home: require("../assets/img/home.png"),
-  back: require("../assets/img/back.png")
+  back: require("../assets/img/back.png"),
+  play: require("../assets/img/play.png"),
+  pause: require("../assets/img/pause.png"),
+  stop: require("../assets/img/stop.png"),
+  sound: require("../assets/img/sound.png"),
+  enlarge: require("../assets/img/enlarge.png"),
+  shrink: require("../assets/img/shrink.png")
 }

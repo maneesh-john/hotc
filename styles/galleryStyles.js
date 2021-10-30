@@ -66,5 +66,12 @@ export default StyleSheet.create({
     height: 270,
     width: 405,
     resizeMode: "contain"
+  },
+  imageWrap: {
+    width: "33%"
+  },
+  thumbnail: {
+    width: "100%",
+    aspectRatio: 1
   }
 });

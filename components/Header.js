@@ -6,8 +6,11 @@ import images from "../constants/images";
 
 import Typography from "./Typography";
 
-const Icon = ({ source, action }) => (
-  <TouchableOpacity onPress={action}>
+export const Icon = ({ source, action }) => (
+  <TouchableOpacity
+    style={{backgroundColor:"#fff", borderRadius: 100}}
+    onPress={action}
+  >
     <Image
       source={source}
       style={styles.headerIconStyle}
@@ -18,6 +21,7 @@ const Icon = ({ source, action }) => (
 const Header = ({ title, navigation, backAction }) => {
 
   const goBack = () => {
+    console.log(backAction)
     backAction?
       backAction?.():
       navigation?.goBack?.(null);

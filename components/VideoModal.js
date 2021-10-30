@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Modal, View } from "react-native";
-import Player from "react-native-video-player";
 import VideoPlayer from "react-native-video";
 
-import { dimensions } from "../constants";
-
-import Header from "./Header"
+import styles from "../styles/playerStyles";
+import Header from "./Header";
+// import Controls from "./Controls";
 
 const VideoModal = ({
   visible,
@@ -15,7 +14,43 @@ const VideoModal = ({
 }) => {
 
   const [show, setShow] = useState(true);
-  const { path, data } = video;
+  const { path } = video;
+
+  // const [paused, setPaused] = useState(false);
+  // const [fullscreen, setFullscreen] = useState(false);
+  // const [progress, setProgress] = useState(0);
+  // const [duration, setDuration] = useState(0);
+  // let playerRef = {};
+
+  // const handlePaused = () => {
+  //   if(progress >= 1){
+  //     playerRef?.seek?.(0);
+  //   }
+  //   setPaused(p => !p);
+  // }
+
+  // const handleProgress = (progress) => {
+  //   setProgress(progress.currentTime / duration);
+  // }
+
+  // const handleEnd = () => {
+  //   setPaused(true);
+  //   onClose();
+  // }
+
+  // const handleLoad = (meta) => {
+  //   setDuration(meta.duration);
+  // }
+
+  // const handleSeek = (e) => {
+  //   const position = e.nativeEvent.locationX;
+  //   const prog = (position/600) * duration;
+  //   playerRef.seek(prog);
+  // }
+
+  // const handleFullscreen = () => {
+  //   setFullscreen(f => !f);
+  // }
 
   return(
     <Modal
@@ -29,53 +64,32 @@ const VideoModal = ({
         backAction={onClose}
         navigation={navigation}
       />}
-      <View style={{
-        flex: 1,
-        backgroundColor: "black",
-        alignItems: "flex-end",
-        justifyContent: "center",
-        zIndex: 1
-      }}>
-        {/* <TouchableOpacity
-          onPress={onClose}
-          style={{
-          alignSelf: "flex-start"
-        }}>
-          <Typography
-            textColor="white"
-            style={{
-              transform: [{rotate: "45deg"}],
-              marginRight: 10
-          }}>+</Typography>
-        </TouchableOpacity> */}
-        {/* <Player
-          video={{uri: `file://${path}`}}
-          thumbnail={{uri: `file://${data}`}}
-          resizeMode="cover"
-          disableFullscreen
-          onStart={() => setShow(false)}
-          onEnd={() => onClose()}
-          onShowControls={() => {
-            setShow(true)
-            setTimeout(() => {
-              setShow(false)
-            }, 3000)
-          }}
-          customStyles={{
-            wrapper: {
-              width: "100%"
-            }
-          }}
-        /> */}
-        <VideoPlayer
-          source={{uri: `file://${path}`}}
-          style={{flex: 1, backgroundColor: "black"}}
-          resizeMode="contain"
-          controls={true}
-          fullscreenOrientation="landscape"
-          style={{width: "100%", height: dimensions.wy * (9/16)}}
-          pictureInPicture={true}
-        />
+      <View style={styles.container}>
+        <View style={styles.wrapper}>
+          <VideoPlayer
+            source={{uri: `file://${path}`}}
+            style={{flex: 1, backgroundColor: "black"}}
+            resizeMode="contain"
+            fullscreenOrientation="landscape"
+            style={styles.player}
+            controls={true}
+            // paused={paused}
+            // onLoad={handleLoad}
+            // onProgress={handleProgress}
+            // onEnd={handleEnd}
+            // fullscreen={fullscreen}
+            // ref={ref => playerRef = ref}
+          />
+          {/* <Controls
+            paused={paused}
+            handlePaused={handlePaused}
+            progress={progress}
+            handleSeek={handleSeek}
+            duration={duration}
+            fullscreen={fullscreen}
+            handleFullscreen={handleFullscreen}
+          /> */}
+        </View>
       </View>
     </Modal>
   );

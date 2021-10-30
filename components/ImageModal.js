@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Button, View } from "react-native";
+import { Modal, TouchableOpacity, View } from "react-native";
 import ImageViewer from "react-native-image-zoom-viewer";
 
-import Header from "./Header";
+import imgs from "../constants/images";
+import Header, { Icon } from "./Header";
 
 const ImageModal = ({
   images,
@@ -74,10 +75,10 @@ const ImageModal = ({
           />
         )}
         renderFooter={() => (
-          <View>
-            <Button
-              title={slideShow? "Pause": "Play"}
-              onPress={slideShowHandler}
+          <View style={{marginLeft: 50, marginBottom: 30}}>
+            <Icon
+              source={slideShow? imgs.pause: imgs.play}
+              action={slideShowHandler}
             />
           </View>
         )}

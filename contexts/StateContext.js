@@ -19,7 +19,7 @@ const initState = {
       }
     ]
   },
-  isLoading: true
+  isLoading: false
 }
 
 const reducer = (state = initState, action) => {

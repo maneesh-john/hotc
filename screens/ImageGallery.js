@@ -8,16 +8,18 @@ import ImageLayout from "../components/ImageLayout";
 import Header from "../components/Header";
 import GalleryItem from "../components/GalleryItem";
 
+const x = () => {}
+
 export default ({ navigation, route }) => {
 
-  const { data, name, background } = route.params;
+  const { data, name, background, altCount } = route.params;
 
   const viewGallery = (item) => navigation.navigate("Images", item);
 
   return(
     <View style={common.container}>
       <ImageLayout bg={background}>
-        <Header navigation={navigation} title={name} />
+        <Header backAction={(altCount > 0)? null: x} navigation={navigation} title={name} />
         <View style={styles.galleryWrapper}>
           <FlatList
             horizontal

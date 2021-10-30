@@ -12,13 +12,18 @@ import Typography from "../components/Typography";
 export default ({ navigation }) => {
 
   const { state } = useContext(StateContext);
-  console.log(state)
 
   const photos = state.data.data.find(d => (d.name == "photos"));
   const videos = state.data.data.find(d => (d.name == "videos"));
+  // console.log("IMGS", videos);
 
-  const viewPhotos = () => navigation.navigate("ImageGallery", photos);
-  const viewVideos = () => navigation.navigate("VideoGallery", videos);
+  const viewPhotos = () => navigation.navigate("ImageGallery", { ...photos, altCount: videos.data?.length });
+  const viewVideos = () => navigation.navigate("VideoGallery", { ...videos, altCount: photos.data?.length });
+  if(!photos.data?.length){
+    // navigation.navigate("VideoGallery", { ...videos, altCount: photos.data?.length });
+  } else if (!videos.data?.length){
+    // navigation.navigate("ImageGallery", { ...photos, altCount: videos.data?.length });
+  }
 
   return(
     <View style={common.container}>
@@ -28,6 +33,7 @@ export default ({ navigation }) => {
             {state?.data?.name}
           </Typography>
           <View>
+            {(photos.data?.length > 0) && (
             <TouchableOpacity
               onPress={viewPhotos}
               style={styles.button}
@@ -35,7 +41,8 @@ export default ({ navigation }) => {
               <Typography type="mega">
                 PHOTOS
               </Typography>
-            </TouchableOpacity>
+            </TouchableOpacity>)}
+            {(videos.data?.length > 0) && (
             <TouchableOpacity
               onPress={viewVideos}
               style={styles.button}
@@ -43,7 +50,7 @@ export default ({ navigation }) => {
               <Typography type="mega">
                 VIDEOS
               </Typography>
-            </TouchableOpacity>
+            </TouchableOpacity>)}
           </View>
         </View>
         <FileLoader />

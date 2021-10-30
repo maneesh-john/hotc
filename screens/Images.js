@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View , Image} from "react-native";
 import MasonryList from "react-native-masonry-list";
+import FastImage from "react-native-fast-image";
 
 import common from "../styles/commonStyles";
 import styles from "../styles/galleryStyles";
@@ -69,6 +70,7 @@ export default ({ navigation, route }) => {
           columns={3}
           onPressImage={onSelect}
           spacing={.5}
+          customImageComponent={FastImage}
         />
         {state.visible && (
           <ImageModal

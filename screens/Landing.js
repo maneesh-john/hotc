@@ -24,6 +24,7 @@ export default ({ navigation }) => {
   } else if (!videos.data?.length){
     // navigation.navigate("ImageGallery", { ...photos, altCount: videos.data?.length });
   }
+  console.log(state, "vv")
 
   return(
     <View style={common.container}>
